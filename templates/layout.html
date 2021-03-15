@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} | INARQTech</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}" />
+    <link rel="icon" href="{{url_for('static',filename='img/logo.png')}}" />
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <div class="header">
+                <img src="{{url_for('static',filename='img/logo.png')}}" width="200" height="200" />
+                <h1>
+                    GESTIÓN DE PEDIDOS A PROVEEDORES
+                </h1>
+            </div>
+        </header>
+
+            <nav id="menu">
+                <ul>
+                    <li><a href="/cargar">Nuevo</a></li>
+                    <li><a href="">Filtrar</a>
+                        <ul>
+                            <li><a href="/filtrar-id">Id</a></li>
+                            <li><a href="/filtrar-obra">Obra</a></li>
+                            <li><a href="/filtrar-proveedor">Proveedor</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">Gestión</a>
+                        <ul>
+                            <li><a href="/actualizar-compra-pre">Compra</a></li>
+                            <li><a href="/actualizar-entrega-pre">Entrega</a></li>
+                            <li><a href="/actualizar-proveedores">Proveedores</a></li>
+                            <li><a href="/borrar">Borrar</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+        <div class="clearfix"></div>
+
+        {% block content %}
+
+        {% endblock %}
+
+        <!-- #region 
+        <aside>
+            <h2>Barra lateral</h2>
+            <form class="formone">
+                <input type="text">
+                <input type="submit" value="Buscar" />
+            </form>
+        </aside>
+        -->
+
+        <div class="clearfix"></div>
+        <!--
+        <div class="footerfix">
+        <footer>
+            INARQTech
+        </footer>
+        </div>
+        -->
+
+    </div>
+    <script>
+        var i = 1;
+        function addTextElement() {
+            var linebreak = document.createElement("br");
+
+            var input2 = document.createElement("INPUT");
+            input2.setAttribute("type","text");
+            input2.setAttribute("class","input-material-1");
+            input2.setAttribute("name","input-material"+String(i));
+            input2.setAttribute("id","input-material"+String(i))
+            document.getElementById('form-materiales').appendChild(input2);
+
+            /*Create the first select*/
+            /*var select1 = document.createElement("SELECT");
+            select1.setAttribute("id","select-material" + String(i));
+            select1.setAttribute("name","select-material" + String(i));
+            select1.setAttribute("class","input-select1");
+            document.getElementById('form-materiales').appendChild(select1);
+            
+            var z = document.createElement("OPTION");
+            z.setAttribute("value", "Hierro");
+            var t = document.createTextNode("Hierro");
+            z.appendChild(t);
+            document.getElementById("select-material" + String(i)).appendChild(z);*/
+
+            /*Create the input for quantity*/
+            var input1 = document.createElement("INPUT");
+            input1.setAttribute("type","text");
+            input1.setAttribute("class","input-cantidad");
+            input1.setAttribute("name","input-cantidad"+String(i));
+            input1.setAttribute("id","input-cantidad"+String(i))
+            document.getElementById('form-materiales').appendChild(input1);
+
+
+            var select2 = document.createElement("SELECT");
+            select2.setAttribute("id","select-q" + String(i));
+            select2.setAttribute("name","select-q" + String(i));
+            select2.setAttribute("class","input-unidad");
+            document.getElementById('form-materiales').appendChild(select2);
+
+            var Noselected = document.createElement("OPTION");
+            var mLineales = document.createElement("OPTION");
+            var unidades = document.createElement("OPTION");
+            var m3 = document.createElement("OPTION");
+            var m2 = document.createElement("OPTION");
+            var Litros = document.createElement("OPTION");
+            var kg = document.createElement("OPTION");
+
+            Noselected.setAttribute("value","seleccionar");
+            mLineales.setAttribute("value","mLineales");
+            unidades.setAttribute("value","unidades");
+            m3.setAttribute("value","m3");
+            m2.setAttribute("value","m2");
+            Litros.setAttribute("value","Litros");
+            kg.setAttribute("value","kg");
+            
+            Noselected.appendChild(document.createTextNode("seleccionar"));
+            mLineales.appendChild(document.createTextNode("mLineales"));
+            unidades.appendChild(document.createTextNode("unidades"));
+            m3.appendChild(document.createTextNode("m3"));
+            m2.appendChild(document.createTextNode("m2"));
+            Litros.appendChild(document.createTextNode("Litros"));
+            kg.appendChild(document.createTextNode("kg"));
+
+            document.getElementById("select-q" + String(i)).appendChild(Noselected);
+            document.getElementById("select-q" + String(i)).appendChild(mLineales);
+            document.getElementById("select-q" + String(i)).appendChild(unidades);
+            document.getElementById("select-q" + String(i)).appendChild(m3);
+            document.getElementById("select-q" + String(i)).appendChild(m2);
+            document.getElementById("select-q" + String(i)).appendChild(Litros);
+            document.getElementById("select-q" + String(i)).appendChild(kg);
+
+            document.getElementById('form-materiales').appendChild(linebreak)
+            
+            /*Agrego un nuevo input*/
+            /*var newinput = document.createElement("INPUT");*/
+            
+            /*Seteo el tipo del input*/
+            //newinput.type = "text";
+            //newinput.setAttribute("class", "input-material");
+            //newinput.setAttribute("id", "input-materiales-add" + String(i));
+            //newinput.setAttribute("name", "input-material-add" + String(i));
+            /*Agrego un nombre*/
+            //document.getElementById('form-input-2').appendChild(newinput);
+            //document.getElementById('form-input-2').appendChild(linebreak);
+            i = i + 1;
+        }
+
+        function getInputInfo() {
+
+            console.log(Array.from(document.querySelectorAll('#complete-form input')).reduce((acc, input) => ({ ...acc, [input.id]: input.value }), {}));
+
+            if (document.getElementById('radio-estado-pendiente').checked) {
+                rate_value = document.getElementById('radio-estado-pendiente').value;
+                console.log("estado pendiente: " + rate_value);
+            }
+            else if (document.getElementById('radio-estado-entregado').checked) {
+                rate_value = document.getElementById('radio-estado-pendiente').value;
+                console.log("estado entregado: " + rate_value);
+            }
+            else if (document.getElementById('radio-estado-otro').checked) {
+                rate_value = document.getElementById('radio-estado-pendiente').value;
+                console.log("estado otro: " + rate_value);
+            }
+
+
+        }
+    </script>
+</body>
+
+</html>

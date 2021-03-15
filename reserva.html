@@ -1,0 +1,148 @@
+<div align="center" id="content">
+    <!--<h1 style="color:black;padding-bottom:10px;">Nuevo pedido</h1>-->
+    <form id="formcargar">
+        <div class="divcontainer">
+
+            <div style="border-bottom:0.5px dashed black;padding-bottom:20px;width:900px;">
+                <h2>
+                    Nuevo pedido
+                </h2>
+            </div>
+
+            <div class="divform">
+                <form>
+                    <div style="float:left; width:50%;">
+                        <div>
+                            <label class="inputlabel">
+                                Obra
+                            </label>
+                        </div>
+                        <input type="text" class="inputform" placeholder="V26" />
+                    </div>
+
+                    <div style="float:left; width:50%">
+                        <div>
+                            <label class="inputlabel">
+                                Material
+                            </label>
+                        </div>
+                        <textarea placeholder="Hierros del 8 - Q:10." class="inputarea" name="material" cols="40"
+                            rows="5" /></textarea>
+                    </div>
+                </form>
+            </div>
+
+            <div class="divform">
+                <form>
+                    <div style="float:left; width:50%">
+                        <div>
+                            <label class="inputlabel">
+                                Proveedor
+                            </label>
+                        </div>
+                        <input type="text" class="inputform" placeholder="Alto parana maderas" />
+                    </div>
+
+                    <div style="float:left; width:50%">
+                        <div>
+                            <label class="inputlabel">
+                                Estado del pedido
+                            </label>
+                        </div>
+                        <div class="checkboxdiv">
+                            <div style="float:left">
+                                <input type="checkbox" id="realizado" name="realizado" value="Realizado"
+                                    style="width:20px;height:20px;" checked />
+                                <label for="realizado">Realizado</label>
+                            </div>
+                            <div style="padding-left:50px;float:left">
+                                <input type="checkbox" id="pendiente" name="pendiente" value="Pendiente"
+                                    style="width:20px;height:20px;" />
+                                <label for="pendiente">Pendiente</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="divform">
+                <form>
+                    <div style="float:left; width:50%">
+                        <div>
+                            <label class="inputlabel">
+                                Estado de entrega
+                            </label>
+                        </div>
+                        <div class="checkboxdiv">
+                            <div style="float:left">
+                                <input type="checkbox" id="entregado" name="entregado" value="Entregado"
+                                    style="width:20px;height:20px;"/>
+                                <label for="realizado">Entregado</label>
+                            </div>
+                            <div style="padding-left:50px;float:left">
+                                <input type="checkbox" id="pendiente" name="pendiente" value="Pendiente"
+                                    style="width:20px;height:20px;" checked/>
+                                <label for="pendiente">Pendiente</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="float:left; width:50%">
+                        <div>
+                            <label class="inputlabel">
+                                Fecha de entrega
+                            </label>
+                        </div>
+                        <input type="text" class="inputform" placeholder="DD-MM-AAAA" />
+                    </div>
+                </form>
+            </div>
+
+            <div class="divform">
+                <form>
+                    <div style="float:left; width:50%">
+                        <div>
+                            <label class="inputlabel">
+                                Comentarios
+                            </label>
+                        </div>
+                        <input type="text" class="inputform" placeholder="Los hierros van al depósito" />
+                    </div>
+
+                    <div style="float:left; width:50%">
+                        <div>
+                            <label class="inputlabel">
+                                Costo del pedido
+                            </label>
+                        </div>
+                        <input type="text" class="inputform" placeholder="$1554"/>
+                    </div>
+                </form>
+            </div>
+
+
+            <div class="divform">
+                <form>
+                    <div style="float:left; width:50%">
+                        <div>
+                            <label class="inputlabel">
+                                Info extra
+                            </label>
+                        </div>
+                        <input type="text" class="inputform" />
+                    </div>
+
+                    <div style="float:left; width:50%;">
+                        <div>
+                            <label class="inputlabel">
+                                Cargar nuevo pedido
+                            </label>
+                        </div>
+                        <input type="submit" class="submitbuttoncargar" value="Aceptar" />
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </form>
+</div>

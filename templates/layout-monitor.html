@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} | INARQTech</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}" />
+    <link rel="icon" href="{{url_for('static',filename='img/logo.png')}}" />
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <div class="header">
+                <img src="{{url_for('static',filename='img/logo.png')}}" width="200" height="200" />
+                <h1>
+                    GESTIÓN DE PEDIDOS A PROVEEDORES
+                </h1>
+            </div>
+        </header>
+
+        <div class="clearfix"></div>
+
+        {% block content %}
+
+        {% endblock %}
+
+        <!-- #region 
+        <aside>
+            <h2>Barra lateral</h2>
+            <form class="formone">
+                <input type="text">
+                <input type="submit" value="Buscar" />
+            </form>
+        </aside>
+        -->
+
+        <div class="clearfix"></div>
+        <!--
+        <div class="footerfix">
+        <footer>
+            INARQTech
+        </footer>
+        </div>
+        -->
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+{% extends 'layout-monitor.html' %}
+
+{% block title%}
+Monitor
+{% endblock%}
+
+{% block content %}
+<div align="center" id="content-monitor">
+
+    <div align="center" class="cuadro-tabla-monitor">
+        <table class="tabledefault">
+            <tr>
+                <th>ID</th>
+                <th>Obra</th>
+                <th>Fecha de pedido</th>
+                <th style="width: 6cm;">Estado de compra</th>
+                <th>Fecha de compra</th>
+                <th style="width: 6cm;">Estado de entrega</th>
+                <th>Fecha de entrega</th>
+                <th>Comentarios</th>
+            </tr>
+
+            {% for row in data %}
+            <tr>
+                {% for cell in row %}
+                {% if cell == 'None' %}
+                <td></td>
+                {% elif cell == 'Entregado' or cell == 'Realizado' %}
+                <td style="color:black; background-color: rgb(36, 116, 45); padding: 5px;font-weight:bold;">{{cell}}</td>
+                {% elif cell == 'Pendiente' or cell == 'No entregado' %}
+                <td style="color:black; background-color: rgb(167, 31, 31); padding: 5px;font-weight:bold;">{{cell}}</td>
+                {% else %}
+                <td>{{cell}}</td>
+                {% endif %}
+                {% endfor %}
+            </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+</div>
+
+{% endblock %}
