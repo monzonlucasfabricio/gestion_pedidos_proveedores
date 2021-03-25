@@ -238,12 +238,52 @@ def monitor():
         data = get_all_data(True)
         return render_template('monitor.html', data = data)
 
-@app.route('/proveedor', methods = ['GET','POST'])
+@app.route('/cargar-proveedor', methods = ['GET','POST'])
 def proveedor():
+    proveedores = []
+    if request.method == 'GET':
+        proveedores = proveedores_listed()
+        return render_template('cargar-proveedor.html', data = proveedores)
+
     if request.method == 'POST':
-        info = request.form.to_dict(flat = False)
+        info = request.form.to_dict(flat=False)
         data_json = json.dumps(info)
-        #print(data_json)
+
+        if is_toadd(data_json):
+            if add_proveedor(data_json):
+                proveedores = proveedores_listed()
+                return render_template('cargar-proveedor.html',data = proveedores)
+        else:
+            if delete_proveedor(data_json):
+                proveedores = proveedores_listed()
+                return render_template('cargar-proveedor.html',data = proveedores)
+
+        proveedores = proveedores_listed()
+        return render_template('cargar-proveedor.html', data = proveedores)
+
+@app.route('/cargar-obra', methods = ['GET','POST'])
+def obra():
+    obras = []
+    if request.method == 'GET':
+        obras = obras_listed()
+        return render_template('cargar-obra.html', data = obras)
+
+    if request.method == 'POST':
+        info = request.form.to_dict(flat=False)
+        data_json = json.dumps(info)
+
+        if is_toadd(data_json):
+            if add_obra(data_json):
+                obras = obras_listed()
+                return render_template('cargar-obra.html',data = obras)
+        else:
+            if delete_obra(data_json):
+                obras = obras_listed()
+                return render_template('cargar-obra.html',data = obras)
+        
+        obras = obras_listed()
+        return render_template('cargar-obra.html',data = obras)
+
 
 if __name__ == '__main__':
 

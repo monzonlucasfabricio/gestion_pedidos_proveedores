@@ -482,7 +482,7 @@ def get_proveedores():
     try:
         c = conn.cursor()
 
-        c.execute('''SELECT Nombre FROM proveedores''')
+        c.execute('''SELECT Nombre FROM proveedores ORDER BY idprov ASC ''')
 
         conn.commit()
 
@@ -510,7 +510,7 @@ def get_obras():
     try:
         c = conn.cursor()
 
-        c.execute('''SELECT Obra FROM Obras''')
+        c.execute('''SELECT Obra FROM Obras ORDER BY Obra ASC ''')
 
         conn.commit()
 
@@ -663,6 +663,90 @@ def separate_materials(seq, num):
 
     return out
 
+def is_toadd(json_data):
+    loads = json.loads(json_data)
+    if loads['input-button'] == ["Agregar"]:
+        return True
+    else:
+        return False
+
+def add_proveedor(json_data):
+    loads = json.loads(json_data)
+    conn = sqlite3.connect(DATABASE)
+    try:
+        c = conn.cursor()
+        c.execute("INSERT INTO proveedores VALUES (NULL,?)",(loads['input-proveedor'][0],))
+        conn.commit()
+        conn.close()
+        return True
+    except Exception as e:
+        print(e)
+        if conn:
+            conn.close()
+        return False
+
+def delete_proveedor(json_data):
+    loads = json.loads(json_data)
+    conn = sqlite3.connect(DATABASE)
+    try:
+        c = conn.cursor()
+        c.execute("DELETE FROM proveedores WHERE Nombre=?",(loads['input-proveedor'][0],))
+        conn.commit()
+        conn.close()
+        return True
+    except Exception as e:
+        print(e)
+        if conn:
+            conn.close()
+        return False
+
+def add_obra(json_data):
+    loads = json.loads(json_data)
+    conn = sqlite3.connect(DATABASE)
+    try:
+        c = conn.cursor()
+        c.execute("INSERT INTO Obras VALUES (NULL,?)",(loads['input-obra'][0],))
+        conn.commit()
+        conn.close()
+        return True
+    except Exception as e:
+        print(e)
+        if conn:
+            conn.close()
+        return False
+
+def delete_obra(json_data):
+    loads = json.loads(json_data)
+    conn = sqlite3.connect(DATABASE)
+    try:
+        c = conn.cursor()
+        c.execute("DELETE FROM Obras WHERE Obra=?",(loads['input-obra'][0],))
+        conn.commit()
+        conn.close()
+        return True
+    except Exception as e:
+        print(e)
+        if conn:
+            conn.close()
+        return False
+
+def obras_listed():
+    newlist = []
+    obras = get_obras()
+    obras.pop(0)
+    for i in obras:
+        newlist.append([i])
+
+    return newlist
+
+def proveedores_listed():
+    newlist = []
+    proveedores = get_proveedores()
+    proveedores.pop(0)
+    for i in proveedores:
+        newlist.append([i])
+
+    return newlist
 
     
 
